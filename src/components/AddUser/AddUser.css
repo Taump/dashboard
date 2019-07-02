@@ -1,0 +1,48 @@
+.AddUser {
+	position: absolute;
+	width: 100vw;
+	height: 100vh;
+	background: rgba(0, 0, 0, 0.3);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.AddUser__wrap {
+	background-color: #ffffff;
+	max-width: 350px;
+	width: 100%;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 20px;
+	box-sizing: border-box;
+}
+.formcreate__input {
+	background: #2b3245;
+	outline: none;
+	color: #fff;
+	width: 250px;
+	padding: 10px;
+	display: block;
+	box-sizing: border-box;
+	margin-bottom: 10px;
+	font-size: 18px;
+	border: none;
+	border-radius: 5px;
+}
+.formcreate__input::placeholder {
+	color: #fff;
+}
+.formcreate__button {
+	background: #2b3245;
+	padding: 10px;
+	color: #ffffff;
+	font-weight: bold;
+	font-family: "Open Sans", sans-serif;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	text-transform: uppercase;
+}

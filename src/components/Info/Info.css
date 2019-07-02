@@ -1,0 +1,40 @@
+.data__grid {
+	background-color: #fff;
+	margin: 0 50px;
+	padding: 20px 0;
+}
+
+.grid__row {
+	display: flex;
+	justify-content: center;
+}
+.grid__row a {
+	text-decoration: none;
+	color: #2b3245;
+}
+.grid_row_title {
+	font-weight: bold;
+}
+.grid__field {
+	width: 300px;
+	padding: 10px 5px;
+}
+.grid__row:nth-child(odd) {
+	background: #f3f3f3; /* Цвет фона */
+}
+
+@media (max-width: 750px) {
+	.grid__row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.grid__field {
+		width: 45%;
+	}
+}
+
+@media (max-width: 350px) {
+	.grid__field {
+		width: 100%;
+	}
+}

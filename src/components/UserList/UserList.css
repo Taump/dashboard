@@ -1,0 +1,20 @@
+.userlist__item {
+	background: #ffffff;
+	display: flex;
+	align-items: center;
+	padding: 20px;
+	box-sizing: border-box;
+	color: #000000;
+	text-decoration: none;
+	margin-bottom: 20px;
+	cursor: pointer;
+}
+.userlist__avatar img {
+	width: 50px;
+	margin-right: 10px;
+}
+
+.userinfo__name,
+.userinfo__surname {
+	font-weight: bold;
+}
