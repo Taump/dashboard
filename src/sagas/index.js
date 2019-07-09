@@ -1,9 +1,9 @@
 import { fork } from "redux-saga/effects";
 
 import onLoginWatch from "./login";
-import onLastFmWatch from "./lastfm";
+import onFetchServicesWatch from "./services";
 
 export default function*() {
 	yield fork(onLoginWatch);
-	yield fork(onLastFmWatch);
+	yield fork(onFetchServicesWatch);
 }

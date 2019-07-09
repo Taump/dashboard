@@ -1,38 +1,36 @@
 import React, { Component } from "react";
-import { Redirect, Link } from "react-router-dom";
-import { userActive, userlist } from "./../../reducers/users";
+import { Link } from "react-router-dom";
+import { userActive, userlist, userService } from "./../../reducers/users";
 import { connect } from "react-redux";
 import { selectUser } from "./../../actions/index";
-import { lastfmRequest } from "./../../actions/lastfm";
+import { servicesRequest } from "./../../actions/services";
 import music from "./music.svg";
+import cat from "./cat.svg";
 import "../App/App.css";
-class App extends Component {
-	state = {
-		redirect: false,
-		path: ""
-	};
-	componentWillMount() {
-		console.log("AAAAPPPP", this.props.userActive);
-		let token = localStorage.getItem("token");
-		console.log("test", token);
-		if (token === null) {
-			this.setState({ redirect: true, path: "/login" });
-		}
-		if (this.props.userActive === null) {
-			this.setState({ redirect: true, path: "/settings" });
-		}
+
+const services = [
+	{
+		name: "Last.fm",
+		image: music,
+		descr: "Можно получить список популярных исполнителей",
+		code: "lastfm"
+	},
+	{
+		name: "thecatapi",
+		image: cat,
+		descr: "Можно получить список пород кошек",
+		code: "thecat"
 	}
+];
+class App extends Component {
 	handleChange = event => {
 		this.props.selectUser(Number(event.target.value));
 	};
-	hcr = () => {
-		this.props.lastfmRequest();
+	hcr = service => {
+		this.props.servicesRequest(service);
 	};
 	render() {
-		if (this.state.redirect) {
-			return <Redirect to={{ pathname: this.state.path }} />;
-		}
-
+		let service = services[this.props.userService - 1];
 		return (
 			<div>
 				<header>
@@ -48,12 +46,12 @@ class App extends Component {
 				</header>
 				<main>
 					<div className="board">
-						<Link to="/info" className="board__itemcard itemcard" onClick={this.hcr}>
+						<Link to="/info" className="board__itemcard itemcard" onClick={this.hcr.bind(this, service.code)}>
 							<div className="itemcard__logo">
-								<img src={music} width={70} />
+								<img src={service.image} width={70} alt={service.code} />
 							</div>
-							<div className="itemcard__name">Last.fm</div>
-							<div className="itemcard__descr">Можно получить список популярных исполнителей</div>
+							<div className="itemcard__name">{service.name}</div>
+							<div className="itemcard__descr">{service.descr}</div>
 						</Link>
 					</div>
 				</main>
@@ -64,9 +62,10 @@ class App extends Component {
 
 const mapStateToProps = state => ({
 	userActive: userActive(state),
-	userlist: userlist(state)
+	userlist: userlist(state),
+	userService: userService(state)
 });
-const mapDispatchToProps = { selectUser, lastfmRequest };
+const mapDispatchToProps = { selectUser, servicesRequest };
 export default connect(
 	mapStateToProps,
 	mapDispatchToProps

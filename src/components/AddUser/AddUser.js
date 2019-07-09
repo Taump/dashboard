@@ -25,7 +25,12 @@ class AddUser extends Component {
 			this.state.descr.length < 40
 		) {
 			this.setState({ name: "", surname: "", descr: "", redirect: true });
-			this.props.addUserRequest({ name: this.state.name, surname: this.state.surname, descr: this.state.descr });
+			this.props.addUserRequest({
+				name: this.state.name,
+				surname: this.state.surname,
+				descr: this.state.descr,
+				service: Math.floor(Math.random() * (2 - 1 + 1)) + 1
+			});
 			this.props.addUserClose();
 		}
 	};
@@ -68,9 +73,7 @@ class AddUser extends Component {
 	}
 }
 
-const mapStateToProps = state => ({
-	
-});
+const mapStateToProps = state => ({});
 const mapDispatchToProps = {
 	addUserRequest,
 	addUserClose

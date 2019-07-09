@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import users from "./users";
-import lastfm from "./lastfm";
+import services from "./services";
 
 export default combineReducers({
 	users,
-	lastfm
+	services
 });

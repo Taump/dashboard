@@ -12,7 +12,6 @@ class UserList extends Component {
 	};
 	render() {
 		let users = this.props.users || [];
-		let userlist = <div />;
 		if (this.state.redirect) {
 			return <Redirect to={{ pathname: "/" }} />;
 		}
@@ -22,7 +21,7 @@ class UserList extends Component {
 				{users.map((item, i) => (
 					<div className="userlist__item" key={"user" + i} onClick={this.handleClick.bind(ctx, i)}>
 						<div className="userlist__avatar">
-							<img src={avatar} />
+							<img src={avatar} alt="" />
 						</div>
 						<div className="userlist__userinfo userinfo">
 							<div className="userinfo__name">{item.name}</div>

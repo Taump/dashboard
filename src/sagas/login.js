@@ -1,9 +1,10 @@
 import { takeLatest, put } from "redux-saga/effects";
-import { loginRequest, loginFailure } from "../actions";
+import { loginRequest, loginFailure, loginSuccess } from "../actions";
 
 function* onLoginRequest({ payload }) {
 	try {
 		yield window.localStorage.setItem("token", payload.hash);
+		yield put(loginSuccess());
 	} catch (errors) {
 		yield put(loginFailure(errors));
 	}
